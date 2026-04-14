@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sport Orthèse 2027 — Vision e-commerce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<style>
+/*===== RESET =====*/
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',system-ui,sans-serif;color:#0F172A;background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+img{display:block;max-width:100%}
+
+/*===== DESIGN TOKENS 2027 =====*/
+:root{
+  --navy:#091E42;
+  --navy-90:rgba(9,30,66,.9);
+  --deep:#020817;
+  --slate:#334155;
+  --muted:#64748B;
+  --light:#94A3B8;
+  --blue:#0EA5E9;
+  --blue-vivid:#05AFF2;
+  --cyan:#06B6D4;
+  --teal:#14B8A6;
+  --emerald:#10B981;
+  --orange:#F97316;
+  --rose:#F43F5E;
+  --violet:#8B5CF6;
+  --surface:#F8FAFC;
+  --surface-2:#F1F5F9;
+  --border:#E2E8F0;
+  --white:#fff;
+  --glass:rgba(255,255,255,.72);
+  --glass-border:rgba(255,255,255,.18);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.12);
+  --shadow-glow:0 0 60px rgba(14,165,233,.15);
+  --radius:12px;
+  --radius-lg:20px;
+  --radius-xl:28px;
+  --t-fast:.15s cubic-bezier(.4,0,.2,1);
+  --t:.3s cubic-bezier(.4,0,.2,1);
+  --t-spring:.5s cubic-bezier(.175,.885,.32,1.275);
+  --max-w:1320px;
+  --grad-hero:linear-gradient(135deg,#020817 0%,#091E42 40%,#0C2D57 70%,#0E3B6F 100%);
+  --grad-blue:linear-gradient(135deg,#0EA5E9,#06B6D4);
+  --grad-warm:linear-gradient(135deg,#F97316,#F43F5E);
+  --grad-mesh:radial-gradient(ellipse at 20% 50%,rgba(14,165,233,.12) 0%,transparent 50%),
+              radial-gradient(ellipse at 80% 20%,rgba(20,184,166,.08) 0%,transparent 50%),
+              radial-gradient(ellipse at 60% 80%,rgba(139,92,246,.06) 0%,transparent 50%);
+}
+
+/*===== UTILITY =====*/
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.badge-blue{background:rgba(14,165,233,.1);color:var(--blue)}
+.badge-teal{background:rgba(20,184,166,.1);color:var(--teal)}
+.badge-orange{background:rgba(249,115,22,.1);color:var(--orange)}
+.badge-violet{background:rgba(139,92,246,.1);color:var(--violet)}
+.section-label{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue)}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:700;line-height:1.15;color:var(--navy);margin-top:8px}
+.section-sub{font-size:17px;color:var(--muted);max-width:560px;line-height:1.6;margin-top:12px}
+
+/*===== ANNOUNCEMENT BAR =====*/
+.announce{
+  background:var(--deep);color:var(--white);
+  padding:10px 20px;text-align:center;
+  font-size:13px;font-weight:500;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.announce .pulse{width:6px;height:6px;border-radius:50%;background:var(--emerald);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+
+/*===== HEADER =====*/
+.header{
+  position:sticky;top:0;z-index:100;
+  background:var(--glass);backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow var(--t);
+}
+.header.scrolled{box-shadow:var(--shadow-sm)}
+.header-inner{
+  display:flex;align-items:center;height:64px;gap:24px;
+}
+.logo-2027{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-2027 svg{height:28px}
+.logo-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--grad-blue);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--white);font-family:'Space Grotesk';font-weight:800;font-size:16px;
+}
+.logo-text{font-family:'Space Grotesk';font-weight:700;font-size:18px;color:var(--navy);line-height:1}
+.logo-text small{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.5px;display:block;margin-top:2px}
+
+.nav-2027{display:flex;gap:4px;margin-left:20px}
+.nav-2027 a{
+  padding:8px 14px;border-radius:8px;font-size:14px;font-weight:500;color:var(--slate);
+  transition:all var(--t-fast);
+}
+.nav-2027 a:hover{background:var(--surface);color:var(--navy)}
+.nav-2027 a.active{background:rgba(14,165,233,.08);color:var(--blue)}
+
+.search-2027{
+  flex:1;max-width:420px;margin-left:auto;position:relative;
+}
+.search-2027 input{
+  width:100%;height:40px;border-radius:100px;border:1px solid var(--border);
+  padding:0 16px 0 40px;font-size:13px;background:var(--surface);
+  outline:none;transition:all var(--t-fast);color:var(--navy);
+}
+.search-2027 input:focus{border-color:var(--blue);background:var(--white);box-shadow:0 0 0 3px rgba(14,165,233,.1)}
+.search-2027 input::placeholder{color:var(--light)}
+.search-2027 .s-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--light)}
+.search-2027 kbd{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  padding:2px 6px;border-radius:4px;border:1px solid var(--border);
+  font-size:10px;color:var(--light);font-family:inherit;
+}
+
+.header-actions{display:flex;align-items:center;gap:4px}
+.h-btn{
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:10px;color:var(--slate);
+  transition:all var(--t-fast);position:relative;
+}
+.h-btn:hover{background:var(--surface);color:var(--navy)}
+.h-btn .icon{font-size:22px}
+.h-btn .dot{position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--rose);border:2px solid var(--white)}
+.btn-cta{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 18px;border-radius:10px;
+  background:var(--grad-blue);color:var(--white);
+  font-size:13px;font-weight:600;
+  transition:all var(--t-fast);box-shadow:0 2px 8px rgba(14,165,233,.25);
+}
+.btn-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(14,165,233,.35)}
+.btn-cta .icon{font-size:18px}
+
+/*===== HERO =====*/
+.hero{
+  position:relative;min-height:85vh;
+  background:var(--grad-hero);
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 50%,rgba(14,165,233,.12) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 80%,rgba(20,184,166,.08) 0%,transparent 60%);
+}
+.hero-grid{
+  position:absolute;inset:0;opacity:.06;
+  background-image:linear-gradient(rgba(255,255,255,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.3) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-orb{
+  position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
+}
+.hero-orb-1{width:500px;height:500px;background:rgba(14,165,233,.15);top:-100px;right:10%}
+.hero-orb-2{width:350px;height:350px;background:rgba(20,184,166,.1);bottom:-50px;left:5%}
+.hero-orb-3{width:250px;height:250px;background:rgba(139,92,246,.08);top:20%;left:40%}
+
+.hero-content{position:relative;z-index:2;padding:60px 0}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+
+.hero-text{color:var(--white)}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:100px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  font-size:12px;font-weight:500;color:rgba(255,255,255,.7);
+  margin-bottom:24px;backdrop-filter:blur(10px);
+}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--emerald)}
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(36px,5vw,64px);font-weight:800;
+  line-height:1.08;letter-spacing:-1px;
+  margin-bottom:20px;
+}
+.hero h1 .grad{
+  background:linear-gradient(135deg,var(--blue-vivid),var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-desc{font-size:18px;line-height:1.7;color:rgba(255,255,255,.6);max-width:480px;margin-bottom:36px}
+
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-hero-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:14px;
+  background:var(--white);color:var(--navy);
+  font-size:15px;font-weight:600;
+  transition:all var(--t);box-shadow:var(--shadow-lg);
+}
+.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(0,0,0,.2)}
+.btn-hero-primary .icon{font-size:20px;color:var(--blue)}
+.btn-hero-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:14px;
+  background:rgba(255,255,255,.06);color:var(--white);
+  font-size:15px;font-weight:500;
+  border:1px solid rgba(255,255,255,.12);
+  transition:all var(--t);backdrop-filter:blur(10px);
+}
+.btn-hero-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.btn-hero-secondary .icon{font-size:20px}
+
+.hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.08)}
+.hero-stat-val{font-family:'Space Grotesk';font-size:28px;font-weight:700;color:var(--white)}
+.hero-stat-label{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* Hero visual */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.hero-card-stack{position:relative;width:100%;max-width:480px;aspect-ratio:3/4}
+
+.hero-product-card{
+  position:absolute;width:280px;
+  background:var(--glass);backdrop-filter:blur(20px);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-xl);padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  transition:transform .6s cubic-bezier(.175,.885,.32,1.275);
+}
+.hero-product-card:nth-child(1){top:0;left:0;z-index:3;transform:rotate(-3deg)}
+.hero-product-card:nth-child(2){top:40px;right:0;z-index:2;transform:rotate(2deg)}
+.hero-product-card:nth-child(3){bottom:20px;left:30px;z-index:1;transform:rotate(-1deg)}
+
+.hpc-img{
+  width:100%;aspect-ratio:1;border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,rgba(14,165,233,.15),rgba(20,184,166,.1));
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  overflow:hidden;
+}
+.hpc-img .icon{font-size:64px;color:rgba(255,255,255,.3)}
+.hpc-name{font-size:14px;font-weight:600;color:var(--white)}
+.hpc-cat{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+.hpc-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.hpc-price{font-family:'Space Grotesk';font-size:18px;font-weight:700;color:var(--white)}
+.hpc-rating{display:flex;align-items:center;gap:3px;font-size:11px;color:rgba(255,255,255,.5)}
+.hpc-rating .icon{font-size:14px;color:var(--orange)}
+
+.hero-float{
+  position:absolute;z-index:10;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.15);border-radius:16px;
+  padding:12px 16px;display:flex;align-items:center;gap:10px;
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-float-1{top:10%;right:-20px;animation-delay:0s}
+.hero-float-2{bottom:15%;left:-30px;animation-delay:2s}
+
+.hf-icon{
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.hf-icon.green{background:rgba(16,185,129,.2);color:var(--emerald)}
+.hf-icon.blue{background:rgba(14,165,233,.2);color:var(--blue)}
+.hf-text{font-size:12px;font-weight:500;color:var(--white)}
+.hf-text small{display:block;font-size:10px;color:rgba(255,255,255,.4);font-weight:400}
+
+/*===== DIAGNOSTIC AI SECTION =====*/
+.diag{
+  padding:100px 0;position:relative;
+  background:var(--surface);overflow:hidden;
+}
+.diag::before{
+  content:'';position:absolute;inset:0;
+  background:var(--grad-mesh);pointer-events:none;
+}
+.diag-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.diag-content{max-width:520px}
+.diag-steps{display:flex;flex-direction:column;gap:20px;margin-top:36px}
+.diag-step{
+  display:flex;gap:16px;padding:18px 20px;
+  border-radius:var(--radius);background:var(--white);
+  border:1px solid var(--border);
+  transition:all var(--t);cursor:pointer;
+}
+.diag-step:hover,.diag-step.active{border-color:var(--blue);box-shadow:var(--shadow-md)}
+.diag-step-num{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk';font-weight:700;font-size:14px;color:var(--blue);
+  flex-shrink:0;
+}
+.diag-step.active .diag-step-num{background:var(--grad-blue);color:var(--white)}
+.diag-step h4{font-size:14px;font-weight:600;color:var(--navy)}
+.diag-step p{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.5}
+
+.diag-visual{position:relative}
+.diag-mockup{
+  width:100%;max-width:440px;margin:0 auto;
+  background:var(--white);border-radius:var(--radius-xl);
+  border:1px solid var(--border);box-shadow:var(--shadow-lg);
+  overflow:hidden;
+}
+.diag-mockup-header{
+  padding:20px 24px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+}
+.diag-avatar{
+  width:40px;height:40px;border-radius:12px;
+  background:var(--grad-blue);
+  display:flex;align-items:center;justify-content:center;
+}
+.diag-avatar .icon{font-size:22px;color:var(--white)}
+.diag-avatar-text h5{font-size:14px;font-weight:600;color:var(--navy)}
+.diag-avatar-text span{font-size:11px;color:var(--emerald);display:flex;align-items:center;gap:4px}
+.diag-avatar-text span::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
+
+.diag-chat{padding:20px 24px;display:flex;flex-direction:column;gap:12px}
+.diag-msg{
+  max-width:85%;padding:12px 16px;border-radius:16px;
+  font-size:13px;line-height:1.5;
+  animation:msgIn .4s ease;
+}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.diag-msg.bot{
+  background:var(--surface);color:var(--navy);
+  border-bottom-left-radius:4px;align-self:flex-start;
+}
+.diag-msg.user{
+  background:var(--grad-blue);color:var(--white);
+  border-bottom-right-radius:4px;align-self:flex-end;
+}
+.diag-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 24px 20px}
+.diag-chip{
+  padding:8px 14px;border-radius:100px;
+  border:1px solid var(--border);
+  font-size:12px;font-weight:500;color:var(--slate);
+  transition:all var(--t-fast);
+}
+.diag-chip:hover{border-color:var(--blue);color:var(--blue);background:rgba(14,165,233,.04)}
+
+/*===== BODY MAP =====*/
+.bodymap{padding:100px 0;position:relative}
+.bodymap-header{text-align:center;margin-bottom:60px}
+.bodymap-header .section-sub{margin-left:auto;margin-right:auto}
+
+.bodymap-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  max-width:1000px;margin:0 auto;
+}
+.bodymap-zone{
+  position:relative;padding:28px 24px;
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  background:var(--white);
+  transition:all var(--t);cursor:pointer;overflow:hidden;
+}
+.bodymap-zone::before{
+  content:'';position:absolute;inset:0;
+  background:var(--grad-blue);opacity:0;
+  transition:opacity var(--t);border-radius:inherit;
+}
+.bodymap-zone:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.bodymap-zone:hover::before{opacity:1}
+.bodymap-zone:hover *{color:var(--white)!important}
+.bodymap-zone:hover .bz-count{background:rgba(255,255,255,.2);color:var(--white)}
+
+.bz-inner{position:relative;z-index:1}
+.bz-icon{font-size:28px;color:var(--blue);margin-bottom:12px;display:block}
+.bz-title{font-family:'Space Grotesk';font-size:17px;font-weight:600;color:var(--navy)}
+.bz-desc{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
+.bz-count{
+  display:inline-flex;align-items:center;gap:4px;
+  margin-top:12px;padding:4px 10px;border-radius:100px;
+  background:var(--surface);font-size:11px;font-weight:600;color:var(--blue);
+  transition:all var(--t);
+}
+
+/*===== PRODUCT SHOWCASE =====*/
+.showcase{padding:100px 0;background:var(--surface);position:relative;overflow:hidden}
+.showcase::before{content:'';position:absolute;inset:0;background:var(--grad-mesh);pointer-events:none}
+.showcase-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;position:relative}
+.showcase-tabs{display:flex;gap:4px}
+.showcase-tab{
+  padding:8px 18px;border-radius:100px;font-size:13px;font-weight:500;
+  color:var(--muted);transition:all var(--t-fast);
+}
+.showcase-tab:hover{color:var(--navy)}
+.showcase-tab.active{background:var(--navy);color:var(--white)}
+
+.showcase-scroll{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;
+}
+.product-card{
+  background:var(--white);border-radius:var(--radius-lg);
+  border:1px solid var(--border);overflow:hidden;
+  transition:all var(--t);position:relative;
+}
+.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+
+.pc-badges{position:absolute;top:12px;left:12px;z-index:2;display:flex;flex-direction:column;gap:4px}
+.pc-badge{
+  padding:3px 8px;border-radius:6px;font-size:10px;font-weight:700;
+  letter-spacing:.3px;text-transform:uppercase;
+}
+.pc-badge.new{background:var(--blue);color:var(--white)}
+.pc-badge.promo{background:var(--rose);color:var(--white)}
+.pc-badge.eco{background:var(--emerald);color:var(--white)}
+.pc-badge.pro{background:var(--violet);color:var(--white)}
+
+.pc-wish{
+  position:absolute;top:12px;right:12px;z-index:2;
+  width:34px;height:34px;border-radius:50%;
+  background:var(--white);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--t-fast);
+}
+.pc-wish:hover{border-color:var(--rose);color:var(--rose);transform:scale(1.1)}
+.pc-wish .icon{font-size:18px}
+
+.pc-img{
+  width:100%;aspect-ratio:1;
+  background:linear-gradient(135deg,var(--surface),var(--surface-2));
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.pc-img .icon{font-size:72px;color:var(--border)}
+.pc-img-overlay{
+  position:absolute;inset:0;
+  background:rgba(9,30,66,.6);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  opacity:0;transition:opacity var(--t-fast);
+}
+.product-card:hover .pc-img-overlay{opacity:1}
+.pc-img-btn{
+  padding:10px 16px;border-radius:10px;
+  font-size:12px;font-weight:600;color:var(--white);
+  transition:all var(--t-fast);
+}
+.pc-img-btn.primary{background:var(--blue)}
+.pc-img-btn.secondary{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2)}
+
+.pc-info{padding:16px}
+.pc-cat{font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:.5px}
+.pc-name{font-size:14px;font-weight:600;color:var(--navy);margin-top:4px;line-height:1.4}
+.pc-meta{display:flex;align-items:center;gap:8px;margin-top:8px}
+.pc-rating{display:flex;align-items:center;gap:2px}
+.pc-rating .icon{font-size:14px;color:var(--orange)}
+.pc-rating span{font-size:12px;color:var(--muted);margin-left:2px}
+.pc-reviews{font-size:11px;color:var(--light)}
+.pc-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.pc-price{font-family:'Space Grotesk';font-size:20px;font-weight:700;color:var(--navy)}
+.pc-price-old{font-size:13px;color:var(--light);text-decoration:line-through;margin-left:6px;font-weight:400}
+.pc-add{
+  width:38px;height:38px;border-radius:10px;
+  background:var(--navy);color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--t-fast);
+}
+.pc-add:hover{background:var(--blue);transform:scale(1.05)}
+.pc-add .icon{font-size:20px}
+
+/*===== TRUST / REASSURANCE =====*/
+.trust{padding:80px 0}
+.trust-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+}
+.trust-item{
+  text-align:center;padding:32px 20px;
+  border-radius:var(--radius-lg);border:1px solid var(--border);
+  background:var(--white);transition:all var(--t);
+}
+.trust-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.trust-icon{
+  width:56px;height:56px;border-radius:16px;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;
+}
+.trust-icon.blue{background:rgba(14,165,233,.08);color:var(--blue)}
+.trust-icon.teal{background:rgba(20,184,166,.08);color:var(--teal)}
+.trust-icon.orange{background:rgba(249,115,22,.08);color:var(--orange)}
+.trust-icon.violet{background:rgba(139,92,246,.08);color:var(--violet)}
+.trust-title{font-family:'Space Grotesk';font-size:15px;font-weight:600;color:var(--navy)}
+.trust-desc{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+
+/*===== EXPERT SECTION =====*/
+.expert{
+  padding:100px 0;
+  background:var(--deep);color:var(--white);
+  position:relative;overflow:hidden;
+}
+.expert::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 30% 50%,rgba(14,165,233,.1) 0%,transparent 60%),
+    radial-gradient(ellipse at 70% 50%,rgba(20,184,166,.08) 0%,transparent 60%);
+}
+.expert-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.expert-content .section-label{color:var(--teal)}
+.expert-content .section-title{color:var(--white)}
+.expert-content .section-sub{color:rgba(255,255,255,.5)}
+
+.expert-features{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+.expert-feat{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:16px 18px;border-radius:var(--radius);
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+  transition:all var(--t);
+}
+.expert-feat:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+.ef-icon{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.ef-icon.blue{background:rgba(14,165,233,.15);color:var(--blue)}
+.ef-icon.teal{background:rgba(20,184,166,.15);color:var(--teal)}
+.ef-icon.orange{background:rgba(249,115,22,.15);color:var(--orange)}
+.ef-title{font-size:14px;font-weight:600}
+.ef-desc{font-size:12px;color:rgba(255,255,255,.4);margin-top:2px;line-height:1.5}
+
+.expert-visual{position:relative}
+.expert-card{
+  max-width:380px;margin:0 auto;
+  background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius-xl);padding:32px;
+}
+.ec-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.ec-photo{
+  width:56px;height:56px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(14,165,233,.3),rgba(20,184,166,.3));
+  display:flex;align-items:center;justify-content:center;
+}
+.ec-photo .icon{font-size:28px;color:var(--white)}
+.ec-name{font-size:16px;font-weight:600}
+.ec-role{font-size:12px;color:rgba(255,255,255,.4)}
+.ec-badge{
+  margin-left:auto;padding:4px 10px;border-radius:100px;
+  background:rgba(16,185,129,.15);color:var(--emerald);
+  font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;
+}
+.ec-quote{font-size:14px;line-height:1.7;color:rgba(255,255,255,.6);font-style:italic;margin-bottom:20px}
+.ec-stats{display:flex;gap:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+.ec-stat-val{font-family:'Space Grotesk';font-size:20px;font-weight:700}
+.ec-stat-label{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+
+/*===== REVIEWS =====*/
+.reviews{padding:100px 0;background:var(--surface);position:relative;overflow:hidden}
+.reviews::before{content:'';position:absolute;inset:0;background:var(--grad-mesh)}
+.reviews-header{text-align:center;margin-bottom:48px;position:relative}
+.reviews-header .section-sub{margin-left:auto;margin-right:auto}
+
+.reviews-summary{
+  display:flex;align-items:center;justify-content:center;gap:24px;
+  margin-top:24px;padding:20px 32px;border-radius:var(--radius-lg);
+  background:var(--white);border:1px solid var(--border);
+  display:inline-flex;
+}
+.rs-score{font-family:'Space Grotesk';font-size:48px;font-weight:800;color:var(--navy)}
+.rs-stars{display:flex;gap:2px;margin-bottom:4px}
+.rs-stars .icon{font-size:20px;color:var(--orange)}
+.rs-count{font-size:13px;color:var(--muted)}
+
+.reviews-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  max-width:1000px;margin:36px auto 0;position:relative;
+}
+.review-card{
+  padding:24px;border-radius:var(--radius-lg);
+  background:var(--white);border:1px solid var(--border);
+  transition:all var(--t);
+}
+.review-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.rc-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.rc-avatar{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--grad-blue);display:flex;align-items:center;justify-content:center;
+  color:var(--white);font-size:14px;font-weight:700;
+}
+.rc-name{font-size:13px;font-weight:600;color:var(--navy)}
+.rc-date{font-size:11px;color:var(--light)}
+.rc-verified{
+  margin-left:auto;padding:2px 8px;border-radius:100px;
+  background:rgba(16,185,129,.08);color:var(--emerald);
+  font-size:10px;font-weight:600;
+}
+.rc-stars{display:flex;gap:1px;margin-bottom:8px}
+.rc-stars .icon{font-size:14px;color:var(--orange)}
+.rc-text{font-size:13px;color:var(--slate);line-height:1.6}
+.rc-product{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:10px;padding:4px 10px;border-radius:6px;
+  background:var(--surface);font-size:11px;color:var(--muted);
+}
+.rc-product .icon{font-size:14px;color:var(--blue)}
+
+/*===== NEWSLETTER =====*/
+.newsletter{
+  padding:80px 0;position:relative;
+}
+.nl-card{
+  max-width:800px;margin:0 auto;padding:56px;
+  border-radius:var(--radius-xl);
+  background:var(--grad-hero);color:var(--white);
+  text-align:center;position:relative;overflow:hidden;
+}
+.nl-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(14,165,233,.2),transparent 60%);
+}
+.nl-card *{position:relative;z-index:1}
+.nl-card .section-label{color:var(--teal)}
+.nl-card h3{font-family:'Space Grotesk';font-size:28px;font-weight:700;margin-top:8px}
+.nl-card p{font-size:15px;color:rgba(255,255,255,.5);margin-top:8px}
+.nl-form{
+  display:flex;gap:8px;max-width:420px;margin:28px auto 0;
+}
+.nl-form input{
+  flex:1;height:48px;border-radius:12px;border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06);backdrop-filter:blur(10px);
+  padding:0 18px;font-size:14px;color:var(--white);outline:none;
+  transition:all var(--t-fast);
+}
+.nl-form input::placeholder{color:rgba(255,255,255,.3)}
+.nl-form input:focus{border-color:var(--blue);background:rgba(255,255,255,.1)}
+.nl-form button{
+  padding:0 24px;border-radius:12px;
+  background:var(--white);color:var(--navy);
+  font-size:14px;font-weight:600;
+  transition:all var(--t-fast);white-space:nowrap;
+}
+.nl-form button:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,255,255,.2)}
+
+/*===== FOOTER =====*/
+.footer{
+  background:var(--deep);color:rgba(255,255,255,.5);
+  padding:64px 0 32px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;
+  padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.footer-brand .logo-text{color:var(--white)}
+.footer-brand .logo-text small{color:rgba(255,255,255,.3)}
+.footer-brand p{font-size:13px;line-height:1.6;margin-top:12px;max-width:260px}
+.footer-social{display:flex;gap:8px;margin-top:16px}
+.footer-social a{
+  width:36px;height:36px;border-radius:10px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.4);font-size:18px;
+  transition:all var(--t-fast);
+}
+.footer-social a:hover{background:rgba(255,255,255,.08);color:var(--white)}
+
+.footer-col h4{font-size:12px;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;padding:4px 0;transition:color var(--t-fast)}
+.footer-col a:hover{color:var(--white)}
+
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:24px;font-size:12px;
+}
+.footer-bottom a{transition:color var(--t-fast)}
+.footer-bottom a:hover{color:var(--white)}
+.footer-pay{display:flex;gap:8px}
+.footer-pay span{
+  padding:4px 10px;border-radius:4px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+  font-size:10px;font-weight:600;color:rgba(255,255,255,.3);
+}
+
+/*===== SCROLL ANIMATIONS =====*/
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+
+/*===== RESPONSIVE =====*/
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-desc{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-stats{justify-content:center}
+  .hero-visual{display:none}
+  .diag-inner,.expert-inner{grid-template-columns:1fr}
+  .diag-visual{display:none}
+  .expert-visual{display:none}
+  .showcase-scroll{grid-template-columns:repeat(2,1fr)}
+  .bodymap-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .nav-2027{display:none}
+  .showcase-scroll{grid-template-columns:1fr}
+  .bodymap-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr}
+  .nl-card{padding:36px 24px}
+  .nl-form{flex-direction:column}
+  .footer-grid{grid-template-columns:1fr}
+  .hero h1{font-size:32px}
+  .hero-stats{flex-wrap:wrap;gap:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announce">
+  <span class="pulse"></span>
+  Nouveau : diagnostic IA personnalis&eacute; &mdash; trouvez l'orth&egrave;se adapt&eacute;e en 60 secondes
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+<div class="container header-inner">
+  <div class="logo-2027">
+    <div class="logo-mark">SO</div>
+    <div class="logo-text">Sport Orth&egrave;se<small>Expert en orthop&eacute;die sportive</small></div>
+  </div>
+  <nav class="nav-2027">
+    <a href="#" class="active">Orthop&eacute;die</a>
+    <a href="#">R&eacute;cup&eacute;ration</a>
+    <a href="#">Pr&eacute;pa physique</a>
+    <a href="#">Nutrition</a>
+    <a href="#">Offre Pro</a>
+  </nav>
+  <div class="search-2027">
+    <span class="material-icons-outlined s-icon">search</span>
+    <input type="text" placeholder="Rechercher un produit, une pathologie...">
+    <kbd>&#8984;K</kbd>
+  </div>
+  <div class="header-actions">
+    <button class="h-btn" title="Compte"><span class="material-icons-outlined icon">person_outline</span></button>
+    <button class="h-btn" title="Favoris"><span class="material-icons-outlined icon">favorite_border</span><span class="dot"></span></button>
+    <button class="btn-cta"><span class="material-icons-outlined icon">shopping_bag</span>Panier (2)</button>
+  </div>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="container hero-content">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge"><span class="dot"></span>Recommand&eacute; par +500 professionnels de sant&eacute;</div>
+        <h1>Bougez sans<br>limite avec<br>l'orth&egrave;se <span class="grad">parfaite</span></h1>
+        <p class="hero-desc">Notre technologie IA analyse votre profil, votre pathologie et votre activit&eacute; sportive pour vous recommander l'&eacute;quipement orthop&eacute;dique id&eacute;al.</p>
+        <div class="hero-actions">
+          <a href="#diag" class="btn-hero-primary"><span class="material-icons-outlined icon">auto_awesome</span>Diagnostic IA gratuit</a>
+          <a href="#products" class="btn-hero-secondary"><span class="material-icons-outlined icon">storefront</span>Voir le catalogue</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-val">15 000+</div><div class="hero-stat-label">Produits vendus / mois</div></div>
+          <div><div class="hero-stat-val">4.8/5</div><div class="hero-stat-label">Note moyenne clients</div></div>
+          <div><div class="hero-stat-val">48h</div><div class="hero-stat-label">Livraison express</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="hero-product-card">
+            <div class="hpc-img"><span class="material-icons-outlined icon">fitness_center</span></div>
+            <div class="hpc-name">Genouill&egrave;re Ligamentaire Pro</div>
+            <div class="hpc-cat">Genou &middot; Sport intensif</div>
+            <div class="hpc-bottom">
+              <span class="hpc-price">89,90&euro;</span>
+              <span class="hpc-rating"><span class="material-icons-outlined icon">star</span>4.9</span>
+            </div>
+          </div>
+          <div class="hero-product-card">
+            <div class="hpc-img"><span class="material-icons-outlined icon">directions_run</span></div>
+            <div class="hpc-name">Chevill&egrave;re Stabilisante</div>
+            <div class="hpc-cat">Cheville &middot; Running</div>
+            <div class="hpc-bottom">
+              <span class="hpc-price">54,90&euro;</span>
+              <span class="hpc-rating"><span class="material-icons-outlined icon">star</span>4.7</span>
+            </div>
+          </div>
+          <div class="hero-product-card">
+            <div class="hpc-img"><span class="material-icons-outlined icon">sports_tennis</span></div>
+            <div class="hpc-name">Coudi&egrave;re Tennis Elbow</div>
+            <div class="hpc-cat">Coude &middot; Raquettes</div>
+            <div class="hpc-bottom">
+              <span class="hpc-price">39,90&euro;</span>
+              <span class="hpc-rating"><span class="material-icons-outlined icon">star</span>4.8</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-float hero-float-1">
+          <div class="hf-icon green"><span class="material-icons-outlined">verified</span></div>
+          <div class="hf-text">Dispositif m&eacute;dical<small>Certifi&eacute; CE &middot; Class I</small></div>
+        </div>
+        <div class="hero-float hero-float-2">
+          <div class="hf-icon blue"><span class="material-icons-outlined">local_shipping</span></div>
+          <div class="hf-text">Livraison offerte<small>D&egrave;s 100&euro; d'achat</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIC IA -->
+<section class="diag" id="diag">
+<div class="container diag-inner">
+  <div class="diag-content reveal">
+    <span class="section-label">Intelligence Artificielle</span>
+    <h2 class="section-title">Votre diagnostic<br>en 60 secondes</h2>
+    <p class="section-sub">Notre assistant IA analyse votre profil sportif, localise votre douleur et vous recommande les produits les plus adapt&eacute;s, valid&eacute;s par nos experts.</p>
+    <div class="diag-steps">
+      <div class="diag-step active">
+        <div class="diag-step-num">1</div>
+        <div><h4>D&eacute;crivez votre besoin</h4><p>Zone du corps, type de douleur, intensit&eacute; de l'activit&eacute;</p></div>
+      </div>
+      <div class="diag-step">
+        <div class="diag-step-num">2</div>
+        <div><h4>L'IA analyse votre profil</h4><p>Croisement de +10 000 cas similaires et avis d'experts</p></div>
+      </div>
+      <div class="diag-step">
+        <div class="diag-step-num">3</div>
+        <div><h4>Recevez votre recommandation</h4><p>S&eacute;lection personnalis&eacute;e avec score de compatibilit&eacute;</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="diag-visual reveal">
+    <div class="diag-mockup">
+      <div class="diag-mockup-header">
+        <div class="diag-avatar"><span class="material-icons-outlined icon">auto_awesome</span></div>
+        <div class="diag-avatar-text">
+          <h5>Assistant Sport Orth&egrave;se</h5>
+          <span>En ligne</span>
+        </div>
+      </div>
+      <div class="diag-chat">
+        <div class="diag-msg bot">Bonjour ! Je suis l'assistant Sport Orth&egrave;se. Quelle zone de votre corps souhaitez-vous prot&eacute;ger ?</div>
+        <div class="diag-msg user">J'ai mal au genou droit quand je cours</div>
+        <div class="diag-msg bot">Je comprends. S'agit-il d'une douleur plut&ocirc;t sur le c&ocirc;t&eacute; externe, interne ou derri&egrave;re la rotule ?</div>
+      </div>
+      <div class="diag-chips">
+        <button class="diag-chip">C&ocirc;t&eacute; externe</button>
+        <button class="diag-chip">C&ocirc;t&eacute; interne</button>
+        <button class="diag-chip">Derri&egrave;re la rotule</button>
+        <button class="diag-chip">Je ne sais pas</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- BODY MAP -->
+<section class="bodymap" id="bodymap">
+<div class="container">
+  <div class="bodymap-header reveal">
+    <span class="section-label">Navigation intuitive</span>
+    <h2 class="section-title">Trouvez par zone du corps</h2>
+    <p class="section-sub">S&eacute;lectionnez la zone concern&eacute;e pour acc&eacute;der directement aux solutions orthop&eacute;diques adapt&eacute;es.</p>
+  </div>
+  <div class="bodymap-grid reveal">
+    <div class="bodymap-zone">
+      <div class="bz-inner">
+        <span class="material-icons-outlined bz-icon">accessibility_new</span>
+        <div class="bz-title">Genou</div>
+        <div class="bz-desc">Ligamentaires, rotuliennes, arthrose, sport</div>
+        <div class="bz-count"><span class="material-icons-outlined" style="font-size:12px">inventory_2</span>86 produits</div>
+      </div>
+    </div>
+    <div class="bodymap-zone">
+      <div class="bz-inner">
+        <span class="material-icons-outlined bz-icon">directions_walk</span>
+        <div class="bz-title">Cheville</div>
+        <div class="bz-desc">Stabilisantes, ligamentaires, post-op</div>
+        <div class="bz-count"><span class="material-icons-outlined" style="font-size:12px">inventory_2</span>64 produits</div>
+      </div>
+    </div>
+    <div class="bodymap-zone">
+      <div class="bz-inner">
+        <span class="material-icons-outlined bz-icon">do_not_step</span>
+        <div class="bz-title">Pieds</div>
+        <div class="bz-desc">Semelles, att&egrave;les, chevillières</div>
+        <div class="bz-count"><span class="material-icons-outlined" style="font-size:12px">inventory_2</span>42 produits</div>
+      </div>
+    </div>
+    <div class="bodymap-zone">
+      <div class="bz-inner">
+        <span class="material-icons-outlined bz-icon">sports_handball</span>
+        <div class="bz-title">&Eacute;paule</div>
+        <div class="bz-desc">&Eacute;pauli&egrave;res, immobilisation, sport</div>
+        <div class="bz-count"><span class="material-icons-outlined" style="font-size:12px">inventory_2</span>38 produits</div>
+      </div>
+    </div>
+    <div class="bodymap-zone">
+      <div class="bz-inner">
+        <span class="material-icons-outlined bz-icon">straighten</span>
+        <div class="bz-title">Dos & lombaires</div>
+        <div class="bz-desc">Ceintures, corsets, maintien postural</div>
+        <div class="bz-count"><span class="material-icons-outlined" style="font-size:12px">inventory_2</span>51 produits</div>
+      </div>
+    </div>
+    <div class="bodymap-zone">
+      <div class="bz-inner">
+        <span class="material-icons-outlined bz-icon">pan_tool</span>
+        <div class="bz-title">Poignet & main</div>
+        <div class="bz-desc">Att&egrave;les, orthèses, canal carpien</div>
+        <div class="bz-count"><span class="material-icons-outlined" style="font-size:12px">inventory_2</span>35 produits</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PRODUCT SHOWCASE -->
+<section class="showcase" id="products">
+<div class="container">
+  <div class="showcase-header reveal">
+    <div>
+      <span class="section-label">Best-sellers</span>
+      <h2 class="section-title">Les essentiels</h2>
+    </div>
+    <div class="showcase-tabs">
+      <button class="showcase-tab active">Populaires</button>
+      <button class="showcase-tab">Nouveaut&eacute;s</button>
+      <button class="showcase-tab">Promos</button>
+      <button class="showcase-tab">Pro</button>
+    </div>
+  </div>
+  <div class="showcase-scroll reveal">
+    <!-- Card 1 -->
+    <div class="product-card">
+      <div class="pc-badges"><span class="pc-badge new">Nouveau</span></div>
+      <button class="pc-wish"><span class="material-icons-outlined icon">favorite_border</span></button>
+      <div class="pc-img">
+        <span class="material-icons-outlined icon">fitness_center</span>
+        <div class="pc-img-overlay">
+          <span class="pc-img-btn primary">Voir le produit</span>
+          <span class="pc-img-btn secondary">Essai 3D</span>
+        </div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Genou</div>
+        <div class="pc-name">Genouill&egrave;re Ligamentaire Pro X3</div>
+        <div class="pc-meta">
+          <div class="pc-rating">
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star_half</span>
+            <span>4.9</span>
+          </div>
+          <span class="pc-reviews">(247 avis)</span>
+        </div>
+        <div class="pc-bottom">
+          <span class="pc-price">89,90&euro;</span>
+          <button class="pc-add"><span class="material-icons-outlined icon">add_shopping_cart</span></button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="product-card">
+      <div class="pc-badges"><span class="pc-badge promo">-20%</span></div>
+      <button class="pc-wish"><span class="material-icons-outlined icon">favorite_border</span></button>
+      <div class="pc-img">
+        <span class="material-icons-outlined icon">directions_run</span>
+        <div class="pc-img-overlay">
+          <span class="pc-img-btn primary">Voir le produit</span>
+          <span class="pc-img-btn secondary">Essai 3D</span>
+        </div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Cheville</div>
+        <div class="pc-name">Chevill&egrave;re Stabilisante AirFlex</div>
+        <div class="pc-meta">
+          <div class="pc-rating">
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span>4.8</span>
+          </div>
+          <span class="pc-reviews">(183 avis)</span>
+        </div>
+        <div class="pc-bottom">
+          <span class="pc-price">43,90&euro;<span class="pc-price-old">54,90&euro;</span></span>
+          <button class="pc-add"><span class="material-icons-outlined icon">add_shopping_cart</span></button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="product-card">
+      <div class="pc-badges"><span class="pc-badge eco">Eco</span></div>
+      <button class="pc-wish"><span class="material-icons-outlined icon">favorite_border</span></button>
+      <div class="pc-img">
+        <span class="material-icons-outlined icon">self_improvement</span>
+        <div class="pc-img-overlay">
+          <span class="pc-img-btn primary">Voir le produit</span>
+          <span class="pc-img-btn secondary">Essai 3D</span>
+        </div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Dos</div>
+        <div class="pc-name">Ceinture Lombaire EcoSupport</div>
+        <div class="pc-meta">
+          <div class="pc-rating">
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star_border</span>
+            <span>4.5</span>
+          </div>
+          <span class="pc-reviews">(92 avis)</span>
+        </div>
+        <div class="pc-bottom">
+          <span class="pc-price">67,50&euro;</span>
+          <button class="pc-add"><span class="material-icons-outlined icon">add_shopping_cart</span></button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="product-card">
+      <div class="pc-badges"><span class="pc-badge pro">Pro</span></div>
+      <button class="pc-wish"><span class="material-icons-outlined icon">favorite_border</span></button>
+      <div class="pc-img">
+        <span class="material-icons-outlined icon">sports_tennis</span>
+        <div class="pc-img-overlay">
+          <span class="pc-img-btn primary">Voir le produit</span>
+          <span class="pc-img-btn secondary">Essai 3D</span>
+        </div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Coude</div>
+        <div class="pc-name">Coudi&egrave;re Tennis Elbow Elite</div>
+        <div class="pc-meta">
+          <div class="pc-rating">
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span class="material-icons-outlined icon">star</span>
+            <span>5.0</span>
+          </div>
+          <span class="pc-reviews">(64 avis)</span>
+        </div>
+        <div class="pc-bottom">
+          <span class="pc-price">42,90&euro;</span>
+          <button class="pc-add"><span class="material-icons-outlined icon">add_shopping_cart</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+<div class="container">
+  <div class="trust-grid reveal">
+    <div class="trust-item">
+      <div class="trust-icon blue"><span class="material-icons-outlined">local_shipping</span></div>
+      <div class="trust-title">Livraison 24/48h</div>
+      <div class="trust-desc">Offerte d&egrave;s 100&euro;. Retours gratuits sous 30 jours.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon teal"><span class="material-icons-outlined">verified_user</span></div>
+      <div class="trust-title">Dispositifs certifi&eacute;s</div>
+      <div class="trust-desc">Tous nos produits sont des dispositifs m&eacute;dicaux certifi&eacute;s CE.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon orange"><span class="material-icons-outlined">support_agent</span></div>
+      <div class="trust-title">Conseil expert</div>
+      <div class="trust-desc">Notre &eacute;quipe de kin&eacute;s et podologues vous accompagne.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon violet"><span class="material-icons-outlined">workspace_premium</span></div>
+      <div class="trust-title">Garantie 2 ans</div>
+      <div class="trust-desc">Satisfaction garantie ou rembours&eacute;. SAV r&eacute;actif.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- EXPERT -->
+<section class="expert" id="expert">
+<div class="container expert-inner">
+  <div class="expert-content reveal">
+    <span class="section-label">Accompagnement</span>
+    <h2 class="section-title">Des experts &agrave;<br>votre service</h2>
+    <p class="section-sub">Notre &eacute;quipe de professionnels de sant&eacute; vous guide vers le choix le plus adapt&eacute; &agrave; votre situation.</p>
+    <div class="expert-features">
+      <div class="expert-feat">
+        <div class="ef-icon blue"><span class="material-icons-outlined">videocam</span></div>
+        <div><div class="ef-title">T&eacute;l&eacute;consultation gratuite</div><div class="ef-desc">Parlez en visio avec un kin&eacute;sith&eacute;rapeute pour un conseil personnalis&eacute;</div></div>
+      </div>
+      <div class="expert-feat">
+        <div class="ef-icon teal"><span class="material-icons-outlined">view_in_ar</span></div>
+        <div><div class="ef-title">Essayage virtuel 3D</div><div class="ef-desc">Visualisez l'orthèse sur un mod&egrave;le 3D de votre morphologie</div></div>
+      </div>
+      <div class="expert-feat">
+        <div class="ef-icon orange"><span class="material-icons-outlined">assignment_turned_in</span></div>
+        <div><div class="ef-title">Suivi post-achat</div><div class="ef-desc">Programme de r&eacute;&eacute;ducation et conseils d'utilisation inclus</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="expert-visual reveal">
+    <div class="expert-card">
+      <div class="ec-header">
+        <div class="ec-photo"><span class="material-icons-outlined icon">person</span></div>
+        <div><div class="ec-name">Dr. Marie Laurent</div><div class="ec-role">Kin&eacute;sith&eacute;rapeute du sport</div></div>
+        <div class="ec-badge">Certifi&eacute;</div>
+      </div>
+      <div class="ec-quote">&laquo; Chaque patient est unique. Notre approche combine expertise m&eacute;dicale et technologie pour trouver la solution id&eacute;ale. &raquo;</div>
+      <div class="ec-stats">
+        <div><div class="ec-stat-val">12 ans</div><div class="ec-stat-label">Exp&eacute;rience</div></div>
+        <div><div class="ec-stat-val">3 200+</div><div class="ec-stat-label">Patients</div></div>
+        <div><div class="ec-stat-val">98%</div><div class="ec-stat-label">Satisfaction</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+<div class="container">
+  <div class="reviews-header reveal">
+    <span class="section-label">T&eacute;moignages</span>
+    <h2 class="section-title">Ils nous font confiance</h2>
+    <p class="section-sub">+12 000 clients satisfaits. D&eacute;couvrez leurs retours d'exp&eacute;rience.</p>
+    <div class="reviews-summary">
+      <div class="rs-score">4.8</div>
+      <div>
+        <div class="rs-stars">
+          <span class="material-icons-outlined icon">star</span>
+          <span class="material-icons-outlined icon">star</span>
+          <span class="material-icons-outlined icon">star</span>
+          <span class="material-icons-outlined icon">star</span>
+          <span class="material-icons-outlined icon">star_half</span>
+        </div>
+        <div class="rs-count">Bas&eacute; sur 12 847 avis v&eacute;rifi&eacute;s</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid reveal">
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar">SB</div>
+        <div><div class="rc-name">S&eacute;bastien B.</div><div class="rc-date">Il y a 3 jours</div></div>
+        <div class="rc-verified">V&eacute;rifi&eacute;</div>
+      </div>
+      <div class="rc-stars">
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+      </div>
+      <div class="rc-text">Le diagnostic IA m'a orient&eacute; vers la bonne genouill&egrave;re. Apr&egrave;s 3 semaines de running, plus aucune douleur. Service client au top.</div>
+      <div class="rc-product"><span class="material-icons-outlined icon">inventory_2</span>Genouill&egrave;re Ligamentaire Pro X3</div>
+    </div>
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar">CL</div>
+        <div><div class="rc-name">Camille L.</div><div class="rc-date">Il y a 1 semaine</div></div>
+        <div class="rc-verified">V&eacute;rifi&eacute;</div>
+      </div>
+      <div class="rc-stars">
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+      </div>
+      <div class="rc-text">La t&eacute;l&eacute;consultation avec le kin&eacute; m'a permis de comprendre ma blessure. Livr&eacute;e en 24h, la chevill&egrave;re est parfaite pour la reprise du trail.</div>
+      <div class="rc-product"><span class="material-icons-outlined icon">inventory_2</span>Chevill&egrave;re Stabilisante AirFlex</div>
+    </div>
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar">PM</div>
+        <div><div class="rc-name">Philippe M.</div><div class="rc-date">Il y a 2 semaines</div></div>
+        <div class="rc-verified">V&eacute;rifi&eacute;</div>
+      </div>
+      <div class="rc-stars">
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star</span>
+        <span class="material-icons-outlined icon">star_half</span>
+      </div>
+      <div class="rc-text">En tant que kin&eacute;, je recommande Sport Orth&egrave;se &agrave; mes patients. La qualit&eacute; des produits et le conseil pro font la diff&eacute;rence.</div>
+      <div class="rc-product"><span class="material-icons-outlined icon">inventory_2</span>Ceinture Lombaire EcoSupport</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+<div class="container">
+  <div class="nl-card reveal">
+    <span class="section-label">Newsletter</span>
+    <h3>Recevez nos conseils sant&eacute; & offres exclusives</h3>
+    <p>Rejoignez +8 000 sportifs. D&eacute;sinscription en un clic.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="votre@email.com">
+      <button type="button">S'inscrire</button>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-2027">
+        <div class="logo-mark">SO</div>
+        <div class="logo-text">Sport Orth&egrave;se<small>Expert en orthop&eacute;die sportive</small></div>
+      </div>
+      <p>Sp&eacute;cialiste de l'orthop&eacute;die sportive depuis 2012. Des produits certifi&eacute;s, un conseil expert.</p>
+      <div class="footer-social">
+        <a href="#" title="Instagram"><span class="material-icons-outlined">photo_camera</span></a>
+        <a href="#" title="Facebook"><span class="material-icons-outlined">thumb_up</span></a>
+        <a href="#" title="YouTube"><span class="material-icons-outlined">play_circle</span></a>
+        <a href="#" title="LinkedIn"><span class="material-icons-outlined">work</span></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Orthop&eacute;die</h4>
+      <a href="#">Genou</a><a href="#">Cheville</a><a href="#">Dos</a><a href="#">&Eacute;paule</a><a href="#">Poignet</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Diagnostic IA</a><a href="#">T&eacute;l&eacute;consultation</a><a href="#">Essayage 3D</a><a href="#">Offre Pro</a>
+    </div>
+    <div class="footer-col">
+      <h4>Aide</h4>
+      <a href="#">Guide des tailles</a><a href="#">Livraison</a><a href="#">Retours</a><a href="#">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>L&eacute;gal</h4>
+      <a href="#">CGV</a><a href="#">Mentions l&eacute;gales</a><a href="#">Confidentialit&eacute;</a><a href="#">Cookies</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2027 Sport Orth&egrave;se. Tous droits r&eacute;serv&eacute;s.</span>
+    <div class="footer-pay">
+      <span>Visa</span><span>Mastercard</span><span>PayPal</span><span>Apple Pay</span><span>Alma 3x</span>
+    </div>
+  </div>
+</div>
+</footer>
+
+<script>
+// Header scroll effect
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{
+  header.classList.toggle('scrolled',window.scrollY>10);
+},{passive:true});
+
+// Scroll reveal
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target)}
+  });
+},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(r=>observer.observe(r));
+
+// Diagnostic steps animation
+const diagSteps=document.querySelectorAll('.diag-step');
+let currentStep=0;
+setInterval(()=>{
+  diagSteps.forEach(s=>s.classList.remove('active'));
+  currentStep=(currentStep+1)%diagSteps.length;
+  diagSteps[currentStep].classList.add('active');
+},3000);
+
+// Showcase tabs
+document.querySelectorAll('.showcase-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.showcase-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+// Product card hover parallax on hero
+document.querySelector('.hero')?.addEventListener('mousemove',(e)=>{
+  const cards=document.querySelectorAll('.hero-product-card');
+  const x=(e.clientX/window.innerWidth-.5)*20;
+  const y=(e.clientY/window.innerHeight-.5)*20;
+  cards.forEach((c,i)=>{
+    const factor=(i+1)*0.4;
+    c.style.transform=`rotate(${[-3,2,-1][i]}deg) translate(${x*factor}px,${y*factor}px)`;
+  });
+});
+</script>
+</body>
+</html>
