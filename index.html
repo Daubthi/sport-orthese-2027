@@ -829,6 +829,8 @@ img{display:block;max-width:100%}
 .reveal.is-visible{opacity:1;transform:translateY(0)}
 
 /*===== RESPONSIVE =====*/
+
+/* ---- TABLET ≤1024px ---- */
 @media(max-width:1024px){
   .hero-inner{grid-template-columns:1fr;text-align:center}
   .hero-desc{margin-left:auto;margin-right:auto}
@@ -843,17 +845,258 @@ img{display:block;max-width:100%}
   .reviews-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:repeat(2,1fr)}
+  /* Header */
+  .nav-2027{display:none}
+  .search-2027{max-width:280px}
 }
+
+/* ---- MOBILE ≤640px ---- */
 @media(max-width:640px){
+  :root{--max-w:100%}
+  .container{padding:0 16px}
+
+  /* === ANNOUNCEMENT === */
+  .announce{font-size:11px;padding:8px 16px}
+
+  /* === HEADER MOBILE === */
+  .header-inner{height:56px;gap:8px}
+  .logo-text small{display:none}
+  .logo-text{font-size:16px}
+  .logo-mark{width:32px;height:32px;font-size:14px;border-radius:8px}
+  .search-2027{display:none}
+  .header-actions{gap:0}
+  .h-btn{width:36px;height:36px;border-radius:8px}
+  .h-btn .icon{font-size:20px}
+  .btn-cta{padding:8px 12px;border-radius:8px;font-size:12px;gap:4px}
+  .btn-cta .icon{font-size:16px}
+
+  /* Mobile search bar (below header) */
+  .mobile-search{
+    display:flex;padding:8px 16px;background:var(--white);
+    border-bottom:1px solid var(--border);
+  }
+  .mobile-search .search-2027{display:flex;flex:1;max-width:none;margin:0}
+
+  /* Mobile hamburger */
+  .mobile-menu-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:36px;height:36px;border-radius:8px;color:var(--slate);
+    order:-1;
+  }
+
+  /* === DESKTOP NAVBAR HIDDEN === */
   .navbar-2027{display:none}
-  .showcase-scroll{grid-template-columns:1fr}
-  .bodymap-grid{grid-template-columns:1fr}
+
+  /* === MOBILE DRAWER MENU === */
+  .mobile-drawer{
+    position:fixed;inset:0;z-index:2000;
+    pointer-events:none;
+  }
+  .mobile-drawer.is-open{pointer-events:auto}
+
+  .mobile-drawer-overlay{
+    position:absolute;inset:0;
+    background:rgba(2,8,23,.5);
+    backdrop-filter:blur(4px);
+    opacity:0;transition:opacity .3s ease;
+  }
+  .mobile-drawer.is-open .mobile-drawer-overlay{opacity:1}
+
+  .mobile-drawer-panel{
+    position:absolute;top:0;left:0;bottom:0;width:88vw;max-width:360px;
+    background:var(--white);
+    transform:translateX(-100%);
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+    display:flex;flex-direction:column;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;
+    box-shadow:4px 0 30px rgba(0,0,0,.2);
+  }
+  .mobile-drawer.is-open .mobile-drawer-panel{transform:translateX(0)}
+
+  .mobile-drawer-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;border-bottom:1px solid var(--border);
+    background:var(--white);position:sticky;top:0;z-index:1;
+  }
+  .mobile-drawer-close{
+    width:36px;height:36px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--slate);background:var(--surface);
+  }
+
+  .mobile-nav-list{padding:8px 0}
+  .mobile-nav-item{border-bottom:1px solid var(--surface-2)}
+  .mobile-nav-trigger{
+    display:flex;align-items:center;justify-content:space-between;
+    width:100%;padding:14px 20px;
+    font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;
+    color:var(--navy);background:none;border:none;
+    text-align:left;cursor:pointer;
+  }
+  .mobile-nav-trigger .icon{
+    font-size:20px;color:var(--light);
+    transition:transform .25s ease;
+  }
+  .mobile-nav-item.is-expanded .mobile-nav-trigger{color:var(--blue);background:rgba(14,165,233,.04)}
+  .mobile-nav-item.is-expanded .mobile-nav-trigger .icon{transform:rotate(180deg);color:var(--blue)}
+
+  .mobile-sub{
+    display:none;background:var(--surface);
+    padding:0 20px 12px;
+  }
+  .mobile-nav-item.is-expanded .mobile-sub{display:block}
+
+  /* Mobile sub-zones (accordion within accordion) */
+  .mobile-zone-btn{
+    display:flex;align-items:center;gap:8px;width:100%;
+    padding:10px 12px;margin-top:4px;border-radius:8px;
+    font-size:13px;font-weight:500;color:var(--slate);
+    background:var(--white);border:1px solid var(--border);
+    text-align:left;cursor:pointer;
+    transition:all .2s ease;
+  }
+  .mobile-zone-btn .icon{font-size:16px;color:var(--light)}
+  .mobile-zone-btn.is-active{
+    color:var(--blue);border-color:var(--blue);
+    background:rgba(14,165,233,.04);
+  }
+  .mobile-zone-btn.is-active .icon{color:var(--blue)}
+
+  .mobile-zone-content{
+    display:none;padding:8px 0 4px 12px;
+  }
+  .mobile-zone-btn.is-active+.mobile-zone-content{display:block}
+
+  .mobile-sub-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:10px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.8px;color:var(--blue);
+    padding:10px 0 4px;display:flex;align-items:center;gap:5px;
+  }
+  .mobile-sub-title .material-icons-outlined{font-size:13px;opacity:.7}
+  .mobile-sub a{
+    display:block;padding:7px 0;
+    font-size:13px;color:var(--slate);
+    border-bottom:1px solid rgba(0,0,0,.04);
+    transition:color .15s;
+  }
+  .mobile-sub a:active{color:var(--blue)}
+  .mobile-sub a:last-child{border-bottom:none}
+
+  .mobile-drawer-footer{
+    margin-top:auto;padding:16px 20px;
+    border-top:1px solid var(--border);
+    background:var(--surface);
+  }
+  .mobile-drawer-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:14px;border-radius:12px;
+    background:var(--grad-blue);color:var(--white);
+    font-size:14px;font-weight:600;
+    box-shadow:0 4px 16px rgba(14,165,233,.3);
+  }
+  .mobile-drawer-cta .icon{font-size:20px}
+
+  /* === HERO MOBILE === */
+  .hero{min-height:auto;padding-top:0;padding-bottom:0}
+  .hero-content{padding:40px 0 48px}
+  .hero h1{font-size:28px;letter-spacing:-.5px;line-height:1.15}
+  .hero-badge{font-size:10px;padding:5px 12px;margin-bottom:16px}
+  .hero-desc{font-size:15px;line-height:1.6;margin-bottom:24px}
+  .btn-hero-primary,.btn-hero-secondary{
+    padding:12px 20px;border-radius:12px;font-size:14px;
+    width:100%;justify-content:center;
+  }
+  .hero-actions{flex-direction:column;gap:10px}
+  .hero-stats{
+    flex-wrap:wrap;gap:0;margin-top:32px;padding-top:24px;
+    justify-content:space-around;
+  }
+  .hero-stats>div{flex:1;min-width:33%;text-align:center}
+  .hero-stat-val{font-size:22px}
+  .hero-stat-label{font-size:10px}
+
+  /* === SECTIONS MOBILE === */
+  .diag,.bodymap,.showcase,.trust,.expert,.reviews,.newsletter{padding:56px 0}
+  .section-title{margin-top:6px}
+  .section-sub{font-size:15px;margin-top:8px}
+
+  /* Diag */
+  .diag-step{padding:14px 16px;gap:12px}
+  .diag-step-num{width:32px;height:32px;font-size:13px}
+  .diag-step h4{font-size:13px}
+  .diag-step p{font-size:12px}
+
+  /* Bodymap */
+  .bodymap-header{margin-bottom:32px}
+  .bodymap-grid{grid-template-columns:1fr;gap:10px}
+  .bodymap-zone{padding:20px 18px}
+  .bz-icon{font-size:24px;margin-bottom:8px}
+  .bz-title{font-size:15px}
+
+  /* Showcase / Products */
+  .showcase-header{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:28px}
+  .showcase-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;width:100%}
+  .showcase-tab{white-space:nowrap;font-size:12px;padding:6px 14px}
+  .showcase-scroll{grid-template-columns:1fr;gap:14px}
+  .pc-info{padding:14px}
+  .pc-name{font-size:13px}
+  .pc-price{font-size:18px}
+
+  /* Trust */
+  .trust{padding:48px 0}
+  .trust-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .trust-item{padding:20px 14px}
+  .trust-icon{width:44px;height:44px;border-radius:12px;font-size:22px;margin-bottom:10px}
+  .trust-title{font-size:13px}
+  .trust-desc{font-size:11px}
+
+  /* Expert */
+  .expert-feat{padding:14px;gap:12px}
+  .ef-icon{width:36px;height:36px;font-size:18px}
+  .ef-title{font-size:13px}
+  .ef-desc{font-size:11px}
+
+  /* Reviews */
+  .reviews-grid{grid-template-columns:1fr;gap:12px}
+  .reviews-summary{padding:16px 20px;gap:16px;flex-wrap:wrap;width:100%}
+  .rs-score{font-size:36px}
+  .review-card{padding:18px}
+  .rc-text{font-size:12px}
+
+  /* Newsletter */
+  .nl-card{padding:32px 20px;border-radius:var(--radius-lg)}
+  .nl-card h3{font-size:22px}
+  .nl-card p{font-size:13px}
+  .nl-form{flex-direction:column;gap:8px}
+  .nl-form input{height:44px;font-size:13px}
+  .nl-form button{height:44px;padding:0 20px;font-size:13px}
+
+  /* Footer */
+  .footer{padding:40px 0 24px}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .footer-brand p{max-width:none}
+  .footer-col h4{margin-bottom:10px;font-size:11px}
+  .footer-col a{font-size:12px;padding:3px 0}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center;font-size:11px}
+  .footer-pay{justify-content:center}
+
+  /* Mega panels hidden on mobile (use drawer instead) */
+  .mega-panel,.mega-backdrop{display:none!important}
+}
+
+/* ---- SMALL PHONES ≤380px ---- */
+@media(max-width:380px){
+  .hero h1{font-size:24px}
+  .hero-stat-val{font-size:20px}
   .trust-grid{grid-template-columns:1fr}
-  .nl-card{padding:36px 24px}
-  .nl-form{flex-direction:column}
-  .footer-grid{grid-template-columns:1fr}
-  .hero h1{font-size:32px}
-  .hero-stats{flex-wrap:wrap;gap:20px}
+  .btn-cta span:not(.icon){display:none}
+  .btn-cta{padding:8px;width:36px;height:36px;justify-content:center}
+}
+
+/* ---- DESKTOP hide mobile elements ---- */
+@media(min-width:641px){
+  .mobile-drawer,.mobile-search,.mobile-menu-btn,.mobile-search-toggle{display:none!important}
 }
 </style>
 </head>
@@ -868,6 +1111,9 @@ img{display:block;max-width:100%}
 <!-- HEADER -->
 <header class="header" id="header">
 <div class="container header-inner">
+  <button class="mobile-menu-btn" id="js-mobile-toggle" aria-label="Menu">
+    <span class="material-icons-outlined icon">menu</span>
+  </button>
   <div class="logo-2027">
     <div class="logo-mark">SO</div>
     <div class="logo-text">Sport Orth&egrave;se<small>Expert en orthop&eacute;die sportive</small></div>
@@ -878,12 +1124,21 @@ img{display:block;max-width:100%}
     <kbd>&#8984;K</kbd>
   </div>
   <div class="header-actions">
+    <button class="h-btn mobile-search-toggle" title="Rechercher"><span class="material-icons-outlined icon">search</span></button>
     <button class="h-btn" title="Compte"><span class="material-icons-outlined icon">person_outline</span></button>
     <button class="h-btn" title="Favoris"><span class="material-icons-outlined icon">favorite_border</span><span class="dot"></span></button>
-    <button class="btn-cta"><span class="material-icons-outlined icon">shopping_bag</span>Panier (2)</button>
+    <button class="btn-cta"><span class="material-icons-outlined icon">shopping_bag</span><span>Panier (2)</span></button>
   </div>
 </div>
 </header>
+
+<!-- MOBILE SEARCH (hidden on desktop) -->
+<div class="mobile-search" id="js-mobile-search" style="display:none">
+  <div class="search-2027">
+    <span class="material-icons-outlined s-icon">search</span>
+    <input type="text" placeholder="Rechercher un produit, une pathologie...">
+  </div>
+</div>
 
 <!-- NAVBAR -->
 <nav class="navbar-2027" id="js-navbar">
@@ -1046,6 +1301,123 @@ img{display:block;max-width:100%}
       <div class="mega-col"><div class="mega-col-title"><span class="material-icons-outlined">monitor_heart</span>Sant&eacute; connect&eacute;e</div><a href="#">Biofeedback</a><a href="#">Appareils de mesure</a></div>
       <div class="mega-col"><div class="mega-col-title"><span class="material-icons-outlined">child_care</span>Sp&eacute;cialis&eacute;</div><a href="#">Maternit&eacute;</a><a href="#">P&eacute;diatrie</a></div>
     </div></div></div>
+  </div>
+</div>
+
+<!-- MOBILE DRAWER (hidden on desktop) -->
+<div class="mobile-drawer" id="js-mobile-drawer">
+  <div class="mobile-drawer-overlay" id="js-drawer-overlay"></div>
+  <div class="mobile-drawer-panel">
+    <div class="mobile-drawer-header">
+      <div class="logo-2027"><div class="logo-mark">SO</div><div class="logo-text">Sport Orth&egrave;se</div></div>
+      <button class="mobile-drawer-close" id="js-drawer-close"><span class="material-icons-outlined">close</span></button>
+    </div>
+    <div class="mobile-nav-list">
+
+      <!-- Orthopédie -->
+      <div class="mobile-nav-item">
+        <button class="mobile-nav-trigger">Orthop&eacute;die<span class="material-icons-outlined icon">expand_more</span></button>
+        <div class="mobile-sub">
+          <button class="mobile-zone-btn is-active" data-m-zone="m-genou"><span class="material-icons-outlined icon">accessibility_new</span>Genou</button>
+          <div class="mobile-zone-content" id="m-genou">
+            <div class="mobile-sub-title"><span class="material-icons-outlined">shield</span>Genouill&egrave;res</div>
+            <a href="#">Genouill&egrave;res ligamentaires</a><a href="#">Genouill&egrave;res rotuliennes</a><a href="#">Genouill&egrave;re arthrose</a><a href="#">Genouill&egrave;re articul&eacute;e</a><a href="#">Genouill&egrave;res souples</a><a href="#">Genouill&egrave;res sport</a>
+            <div class="mobile-sub-title"><span class="material-icons-outlined">lock</span>Immobilisation</div>
+            <a href="#">Attelles de Zimmer</a><a href="#">Prot&egrave;ge-genoux</a><a href="#">Exosquelette</a>
+          </div>
+          <button class="mobile-zone-btn" data-m-zone="m-cheville"><span class="material-icons-outlined icon">directions_walk</span>Cheville</button>
+          <div class="mobile-zone-content" id="m-cheville">
+            <a href="#">Chevill&egrave;res ligamentaires</a><a href="#">Chevill&egrave;re tendon d'Achille</a><a href="#">Chevill&egrave;res souples</a><a href="#">Attelles post-op&eacute;ratoires</a><a href="#">Bottes de marche</a><a href="#">Chevill&egrave;res sport</a>
+          </div>
+          <button class="mobile-zone-btn" data-m-zone="m-pieds"><span class="material-icons-outlined icon">do_not_step</span>Pieds</button>
+          <div class="mobile-zone-content" id="m-pieds">
+            <a href="#">Orth&egrave;ses plantaires</a><a href="#">Protections orteils</a><a href="#">Semelles orthop&eacute;diques</a><a href="#">Chaussures post-op&eacute;ratoires</a>
+          </div>
+          <button class="mobile-zone-btn" data-m-zone="m-dos"><span class="material-icons-outlined icon">straighten</span>Dos &amp; lombaires</button>
+          <div class="mobile-zone-content" id="m-dos">
+            <a href="#">Ceinture lombaire</a><a href="#">Ceinture sacro-iliaque</a><a href="#">Ceinture abdominale</a><a href="#">Corset</a><a href="#">Redresse-dos</a>
+          </div>
+          <button class="mobile-zone-btn" data-m-zone="m-epaule"><span class="material-icons-outlined icon">sports_handball</span>&Eacute;paule</button>
+          <div class="mobile-zone-content" id="m-epaule">
+            <a href="#">Attelles d'immobilisation</a><a href="#">&Eacute;charpe de bras</a><a href="#">&Eacute;pauli&egrave;res</a><a href="#">Anneaux claviculaires</a>
+          </div>
+          <button class="mobile-zone-btn" data-m-zone="m-coude"><span class="material-icons-outlined icon">front_hand</span>Coude</button>
+          <div class="mobile-zone-content" id="m-coude">
+            <a href="#">Attelle coude d'immobilisation</a><a href="#">Bracelet &eacute;picondylien</a><a href="#">Coudi&egrave;re souple</a>
+          </div>
+          <button class="mobile-zone-btn" data-m-zone="m-poignet"><span class="material-icons-outlined icon">pan_tool</span>Poignet &amp; main</button>
+          <div class="mobile-zone-content" id="m-poignet">
+            <a href="#">Attelles poignets</a><a href="#">Attelles poignet-pouce</a><a href="#">Attelles pouce</a><a href="#">Orth&egrave;ses de doigt</a>
+          </div>
+          <button class="mobile-zone-btn" data-m-zone="m-cervical"><span class="material-icons-outlined icon">face</span>Cervicales</button>
+          <div class="mobile-zone-content" id="m-cervical">
+            <a href="#">Colliers cervicaux souples</a><a href="#">Colliers cervicaux semi-rigides</a><a href="#">Colliers cervicaux rigides</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Récupération -->
+      <div class="mobile-nav-item">
+        <button class="mobile-nav-trigger">R&eacute;cup&eacute;ration<span class="material-icons-outlined icon">expand_more</span></button>
+        <div class="mobile-sub">
+          <div class="mobile-sub-title"><span class="material-icons-outlined">electric_bolt</span>&Eacute;lectrostimulation</div>
+          <a href="#">Anti-douleurs (TENS)</a><a href="#">Performance (EMS)</a><a href="#">Fitness</a><a href="#">Sans fil</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">ac_unit</span>Cryoth&eacute;rapie</div>
+          <a href="#">Bains froids</a><a href="#">Bottes de cryoth&eacute;rapie</a><a href="#">Cryoth&eacute;rapie compressive</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">air</span>Pressoth&eacute;rapie</div>
+          <a href="#">Bottes de pressoth&eacute;rapie</a><a href="#">Appareils complets</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">self_improvement</span>Massage</div>
+          <a href="#">Pistolets de massage</a><a href="#">Rouleaux de massage</a><a href="#">Balles de massage</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">whatshot</span>Thermoth&eacute;rapie</div>
+          <a href="#">Ceintures chauffantes</a><a href="#">Genouill&egrave;res chauffantes</a>
+        </div>
+      </div>
+
+      <!-- Prépa physique -->
+      <div class="mobile-nav-item">
+        <button class="mobile-nav-trigger">Pr&eacute;pa physique<span class="material-icons-outlined icon">expand_more</span></button>
+        <div class="mobile-sub">
+          <div class="mobile-sub-title"><span class="material-icons-outlined">fitness_center</span>Appareils</div>
+          <a href="#">BFR (Blood Flow Restriction)</a><a href="#">Entra&icirc;nement isoinertiels</a><a href="#">BlazePod</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">sports_gymnastics</span>&Eacute;chauffement &amp; mobilit&eacute;</div>
+          <a href="#">Cordes &agrave; sauter</a><a href="#">&Eacute;lastiques &amp; bandes</a><a href="#">Rouleaux de massage</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">bolt</span>R&eacute;sistance &amp; puissance</div>
+          <a href="#">Harnais de r&eacute;sistance</a><a href="#">Parachutes de vitesse</a><a href="#">Tra&icirc;neaux de puissance</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">category</span>Petit mat&eacute;riel</div>
+          <a href="#">Balles de proprioception</a><a href="#">Coussins d'&eacute;quilibre</a><a href="#">Swiss Ball</a>
+        </div>
+      </div>
+
+      <!-- Nutrition -->
+      <div class="mobile-nav-item">
+        <button class="mobile-nav-trigger">Nutrition<span class="material-icons-outlined icon">expand_more</span></button>
+        <div class="mobile-sub">
+          <div class="mobile-sub-title"><span class="material-icons-outlined">restaurant</span>Nutrition sportive</div>
+          <a href="#">Prot&eacute;ines</a><a href="#">Barres &eacute;nerg&eacute;tiques</a><a href="#">Boissons isotoniques</a><a href="#">Gels &eacute;nerg&eacute;tiques</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">medication</span>Compl&eacute;ments</div>
+          <a href="#">Collag&egrave;ne &amp; articulations</a><a href="#">Vitamines &amp; min&eacute;raux</a><a href="#">Om&eacute;ga 3</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">water_drop</span>R&eacute;cup&eacute;ration</div>
+          <a href="#">Boissons de r&eacute;cup&eacute;ration</a><a href="#">BCAA &amp; acides amin&eacute;s</a><a href="#">Cr&eacute;atine</a>
+        </div>
+      </div>
+
+      <!-- Matériel pro -->
+      <div class="mobile-nav-item">
+        <button class="mobile-nav-trigger">Mat&eacute;riel pro<span class="material-icons-outlined icon">expand_more</span></button>
+        <div class="mobile-sub">
+          <div class="mobile-sub-title"><span class="material-icons-outlined">medical_services</span>Kin&eacute;sith&eacute;rapie</div>
+          <a href="#">Tables de kin&eacute;sith&eacute;rapie</a><a href="#">Mobilier de cabinet</a><a href="#">Mat&eacute;riel de r&eacute;&eacute;ducation</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">inventory_2</span>Consommables</div>
+          <a href="#">Strapping &amp; taping</a><a href="#">Consommables m&eacute;dicaux</a>
+          <div class="mobile-sub-title"><span class="material-icons-outlined">monitor_heart</span>Sant&eacute; connect&eacute;e</div>
+          <a href="#">Biofeedback</a><a href="#">Appareils de mesure</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="#diag" class="mobile-drawer-cta" id="js-drawer-diag"><span class="material-icons-outlined icon">auto_awesome</span>Diagnostic IA gratuit</a>
+    </div>
   </div>
 </div>
 
@@ -1657,6 +2029,54 @@ document.querySelectorAll('.showcase-tab').forEach(tab=>{
     tab.classList.add('active');
   });
 });
+
+// ===== MOBILE DRAWER =====
+(function(){
+  const drawer=document.getElementById('js-mobile-drawer');
+  if(!drawer)return;
+  const toggle=document.getElementById('js-mobile-toggle');
+  const close=document.getElementById('js-drawer-close');
+  const overlay=document.getElementById('js-drawer-overlay');
+  const diagBtn=document.getElementById('js-drawer-diag');
+
+  function openDrawer(){drawer.classList.add('is-open');document.body.style.overflow='hidden'}
+  function closeDrawer(){drawer.classList.remove('is-open');document.body.style.overflow=''}
+
+  toggle?.addEventListener('click',openDrawer);
+  close?.addEventListener('click',closeDrawer);
+  overlay?.addEventListener('click',closeDrawer);
+  diagBtn?.addEventListener('click',closeDrawer);
+
+  // Accordion: main categories
+  document.querySelectorAll('.mobile-nav-trigger').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      const item=this.closest('.mobile-nav-item');
+      const wasOpen=item.classList.contains('is-expanded');
+      // close all
+      document.querySelectorAll('.mobile-nav-item').forEach(i=>i.classList.remove('is-expanded'));
+      if(!wasOpen)item.classList.add('is-expanded');
+    });
+  });
+
+  // Sub-accordion: body zones
+  document.querySelectorAll('.mobile-zone-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      const wasActive=this.classList.contains('is-active');
+      // close siblings
+      this.closest('.mobile-sub').querySelectorAll('.mobile-zone-btn').forEach(b=>b.classList.remove('is-active'));
+      if(!wasActive)this.classList.add('is-active');
+    });
+  });
+
+  // Mobile search toggle
+  const searchToggle=document.querySelector('.mobile-search-toggle');
+  const searchBar=document.getElementById('js-mobile-search');
+  searchToggle?.addEventListener('click',()=>{
+    const visible=searchBar.style.display!=='none';
+    searchBar.style.display=visible?'none':'flex';
+    if(!visible)searchBar.querySelector('input')?.focus();
+  });
+})();
 
 // Product card hover parallax on hero
 document.querySelector('.hero')?.addEventListener('mousemove',(e)=>{
