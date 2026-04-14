@@ -82,12 +82,10 @@ img{display:block;max-width:100%}
 
 /*===== HEADER =====*/
 .header{
-  position:sticky;top:0;z-index:100;
-  background:var(--glass);backdrop-filter:blur(20px) saturate(180%);
+  background:var(--white);
   border-bottom:1px solid var(--border);
   transition:box-shadow var(--t);
 }
-.header.scrolled{box-shadow:var(--shadow-sm)}
 .header-inner{
   display:flex;align-items:center;height:64px;gap:24px;
 }
@@ -145,6 +143,111 @@ img{display:block;max-width:100%}
 }
 .btn-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(14,165,233,.35)}
 .btn-cta .icon{font-size:18px}
+
+/*===== NAVBAR =====*/
+.navbar-2027{
+  background:var(--white);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:1000;
+}
+.nav-list{display:flex;align-items:stretch;height:44px;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.nav-link{
+  display:flex;align-items:center;gap:3px;padding:0 16px;
+  font-size:14px;font-weight:500;color:var(--slate);
+  background:none;border:none;border-bottom:2px solid transparent;
+  transition:all var(--t-fast);cursor:pointer;
+}
+.nav-link .icon{font-size:16px;transition:transform var(--t-fast);color:var(--light)}
+.nav-link:hover,.nav-link.is-active{color:var(--blue);border-bottom-color:var(--blue)}
+.nav-link.is-active .icon{transform:rotate(180deg);color:var(--blue)}
+
+/*===== MEGA PANELS =====*/
+.mega-backdrop{
+  display:none;position:fixed;inset:0;z-index:998;
+  background:rgba(9,30,66,.2);backdrop-filter:blur(2px);
+}
+.mega-backdrop.is-visible{display:block}
+
+.mega-panel{
+  display:none;position:fixed;left:0;right:0;z-index:999;
+  background:var(--white);
+  box-shadow:0 12px 40px rgba(0,0,0,.1);
+  border-top:1px solid var(--border);
+}
+.mega-panel.is-open{display:block;animation:megaIn .25s ease}
+@keyframes megaIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+.mega-body{display:flex;max-width:var(--max-w);margin:0 auto;min-height:380px}
+
+/* -- Sidebar -- */
+.mega-side{
+  width:240px;flex-shrink:0;background:var(--surface);
+  border-right:1px solid var(--border);padding:12px 0;
+  display:flex;flex-direction:column;
+}
+.mega-side-links{flex:1;overflow-y:auto}
+.mega-side-link{
+  display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+  padding:10px 16px;font-size:13px;font-weight:500;
+  color:var(--slate);background:none;
+  border:none;border-left:3px solid transparent;
+  transition:all var(--t-fast);cursor:pointer;
+}
+.mega-side-link .icon{font-size:18px;color:var(--light)}
+.mega-side-link:hover{background:rgba(14,165,233,.04);color:var(--blue)}
+.mega-side-link.is-active{
+  background:rgba(14,165,233,.06);color:var(--blue);
+  border-left-color:var(--blue);font-weight:600;
+}
+.mega-side-link.is-active .icon{color:var(--blue)}
+
+.mega-side-promo{
+  margin:8px 12px;padding:16px;border-radius:var(--radius);
+  background:var(--grad-hero);color:var(--white);
+}
+.mega-side-promo small{
+  display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;
+  background:rgba(255,255,255,.15);padding:3px 8px;border-radius:100px;
+  margin-bottom:6px;letter-spacing:.5px;
+}
+.mega-side-promo strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.mega-side-promo span{font-size:11px;opacity:.7;line-height:1.4}
+
+/* -- Main content -- */
+.mega-main{flex:1;display:flex;flex-direction:column;min-width:0}
+
+.mega-tabs{
+  display:flex;border-bottom:1px solid var(--border);
+  padding:0 24px;background:var(--surface);flex-shrink:0;
+}
+.mega-tab-btn{
+  padding:11px 18px;font-size:12px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.5px;color:var(--light);
+  border:none;background:none;border-bottom:2px solid transparent;
+  transition:all var(--t-fast);cursor:pointer;
+}
+.mega-tab-btn:hover{color:var(--slate)}
+.mega-tab-btn.is-active{color:var(--blue);border-bottom-color:var(--blue)}
+
+.zone-view{display:none;flex-direction:column;flex:1}
+.zone-view.is-active{display:flex}
+
+.mega-pane{display:none;padding:24px;flex:1}
+.mega-pane.is-active{display:block}
+
+.mega-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px}
+.mega-col-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--navy);padding-bottom:6px;margin-bottom:8px;
+  border-bottom:2px solid var(--blue);
+}
+.mega-col a{
+  display:block;padding:4px 0;font-size:13px;
+  color:var(--slate);transition:all var(--t-fast);
+}
+.mega-col a:hover{color:var(--blue);padding-left:4px}
+
+.mega-simple{padding:24px;flex:1}
 
 /*===== HERO =====*/
 .hero{
@@ -698,7 +801,7 @@ img{display:block;max-width:100%}
   .footer-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:640px){
-  .nav-2027{display:none}
+  .navbar-2027{display:none}
   .showcase-scroll{grid-template-columns:1fr}
   .bodymap-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:1fr}
@@ -725,13 +828,6 @@ img{display:block;max-width:100%}
     <div class="logo-mark">SO</div>
     <div class="logo-text">Sport Orth&egrave;se<small>Expert en orthop&eacute;die sportive</small></div>
   </div>
-  <nav class="nav-2027">
-    <a href="#" class="active">Orthop&eacute;die</a>
-    <a href="#">R&eacute;cup&eacute;ration</a>
-    <a href="#">Pr&eacute;pa physique</a>
-    <a href="#">Nutrition</a>
-    <a href="#">Offre Pro</a>
-  </nav>
   <div class="search-2027">
     <span class="material-icons-outlined s-icon">search</span>
     <input type="text" placeholder="Rechercher un produit, une pathologie...">
@@ -744,6 +840,170 @@ img{display:block;max-width:100%}
   </div>
 </div>
 </header>
+
+<!-- NAVBAR -->
+<nav class="navbar-2027" id="js-navbar">
+  <div class="nav-list">
+    <button class="nav-link" data-target="mega-orthopedie">Orthop&eacute;die<span class="material-icons-outlined icon">expand_more</span></button>
+    <button class="nav-link" data-target="mega-recuperation">R&eacute;cup&eacute;ration<span class="material-icons-outlined icon">expand_more</span></button>
+    <button class="nav-link" data-target="mega-prepa">Pr&eacute;pa physique<span class="material-icons-outlined icon">expand_more</span></button>
+    <button class="nav-link" data-target="mega-nutrition">Nutrition<span class="material-icons-outlined icon">expand_more</span></button>
+    <button class="nav-link" data-target="mega-pro">Mat&eacute;riel pro<span class="material-icons-outlined icon">expand_more</span></button>
+  </div>
+</nav>
+
+<!-- MEGA PANELS -->
+<div class="mega-backdrop" id="js-backdrop"></div>
+
+<!-- ORTHOPÉDIE -->
+<div class="mega-panel" id="mega-orthopedie">
+  <div class="mega-body">
+    <div class="mega-side">
+      <div class="mega-side-links">
+        <button class="mega-side-link is-active" data-zone="genou"><span class="material-icons-outlined icon">accessibility_new</span>Genou</button>
+        <button class="mega-side-link" data-zone="cheville"><span class="material-icons-outlined icon">directions_walk</span>Cheville</button>
+        <button class="mega-side-link" data-zone="pieds"><span class="material-icons-outlined icon">do_not_step</span>Pieds</button>
+        <button class="mega-side-link" data-zone="hanches"><span class="material-icons-outlined icon">airline_seat_legroom_normal</span>Hanches &amp; cuisses</button>
+        <button class="mega-side-link" data-zone="dos"><span class="material-icons-outlined icon">straighten</span>Dos &amp; lombaires</button>
+        <button class="mega-side-link" data-zone="epaule"><span class="material-icons-outlined icon">sports_handball</span>&Eacute;paule</button>
+        <button class="mega-side-link" data-zone="coude"><span class="material-icons-outlined icon">front_hand</span>Coude</button>
+        <button class="mega-side-link" data-zone="poignet"><span class="material-icons-outlined icon">pan_tool</span>Poignet, main &amp; pouce</button>
+        <button class="mega-side-link" data-zone="cervical"><span class="material-icons-outlined icon">face</span>Cervicales</button>
+      </div>
+      <div class="mega-side-promo">
+        <small>Conseil expert</small>
+        <strong>Besoin d'aide pour choisir ?</strong>
+        <span>Nos experts vous guident vers l'orth&egrave;se adapt&eacute;e.</span>
+      </div>
+    </div>
+    <div class="mega-main">
+      <!-- GENOU -->
+      <div class="zone-view is-active" data-zone-view="genou">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button><button class="mega-tab-btn">Par sport</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid">
+          <div class="mega-col"><div class="mega-col-title">Genouill&egrave;res</div><a href="#">Genouill&egrave;res ligamentaires</a><a href="#">Genouill&egrave;res rotuliennes</a><a href="#">Genouill&egrave;re arthrose</a><a href="#">Genouill&egrave;re articul&eacute;e</a><a href="#">Genouill&egrave;res souples</a><a href="#">Genouill&egrave;res sport</a></div>
+          <div class="mega-col"><div class="mega-col-title">Immobilisation</div><a href="#">Attelles de Zimmer</a><a href="#">Prot&egrave;ge-genoux</a><a href="#">Exosquelette</a></div>
+        </div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Entorse du genou</a><a href="#">Arthrose &amp; gonarthrose</a><a href="#">Tendinite du genou</a><a href="#">Fissure / d&eacute;chirure m&eacute;nisque</a><a href="#">Osgood-Schlatter</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid">
+          <div class="mega-col"><a href="#">Genouill&egrave;re basketball</a><a href="#">Genouill&egrave;re course &agrave; pied</a><a href="#">Genouill&egrave;re football</a><a href="#">Genouill&egrave;re handball</a><a href="#">Genouill&egrave;re motocross</a><a href="#">Musculation &amp; cross training</a></div>
+          <div class="mega-col"><a href="#">Genouill&egrave;re rugby</a><a href="#">Genouill&egrave;re ski</a><a href="#">Genouill&egrave;re tennis</a><a href="#">Genouill&egrave;re VTT</a><a href="#">Genouill&egrave;re volley</a><a href="#">Genouill&egrave;res waterproof</a></div>
+        </div></div>
+      </div>
+      <!-- CHEVILLE -->
+      <div class="zone-view" data-zone-view="cheville">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button><button class="mega-tab-btn">Par sport</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid"><div class="mega-col"><a href="#">Chevill&egrave;res ligamentaires</a><a href="#">Chevill&egrave;re tendon d'Achille</a><a href="#">Chevill&egrave;res souples</a><a href="#">Attelles post-op&eacute;ratoires</a><a href="#">Bottes de marche</a><a href="#">Releveur de pieds</a><a href="#">Chevill&egrave;res sport</a><a href="#">Chevill&egrave;res enfants</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Entorse de la cheville</a><a href="#">Tendinite d'Achille</a><a href="#">Arthrose de la cheville</a><a href="#">Fracture de la cheville</a><a href="#">Instabilit&eacute; chronique</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Chevill&egrave;re basketball</a><a href="#">Chevill&egrave;re football</a><a href="#">Chevill&egrave;re running</a><a href="#">Chevill&egrave;re rugby</a><a href="#">Chevill&egrave;re handball</a><a href="#">Chevill&egrave;re tennis</a><a href="#">Chevill&egrave;re ski</a><a href="#">Chevill&egrave;re volley</a></div></div></div>
+      </div>
+      <!-- PIEDS -->
+      <div class="zone-view" data-zone-view="pieds">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid"><div class="mega-col"><a href="#">Orth&egrave;ses plantaires</a><a href="#">Protections orteils</a><a href="#">Protection anti-frottements</a><a href="#">Semelles orthop&eacute;diques</a><a href="#">Chaussures post-op&eacute;ratoires</a><a href="#">Chaussures orthop&eacute;diques</a><a href="#">Releveur de pieds</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Fasciite plantaire</a><a href="#">Hallux valgus</a><a href="#">&Eacute;pine calcan&eacute;enne</a><a href="#">M&eacute;tatarsalgies</a><a href="#">Fracture de fatigue</a></div></div></div>
+      </div>
+      <!-- HANCHES -->
+      <div class="zone-view" data-zone-view="hanches">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid"><div class="mega-col"><a href="#">Short de compression (pubalgie)</a><a href="#">Short de protection</a><a href="#">Ceinture pelvienne / inguinale</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Pubalgie</a><a href="#">Tendinite des adducteurs</a><a href="#">Douleur de hanche</a></div></div></div>
+      </div>
+      <!-- DOS -->
+      <div class="zone-view" data-zone-view="dos">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid"><div class="mega-col"><a href="#">Ceinture lombaire</a><a href="#">Ceinture sacro-iliaque</a><a href="#">Ceinture abdominale</a><a href="#">Corset</a><a href="#">Redresse-dos</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Hernie discale</a><a href="#">Sciatique</a><a href="#">Lombalgie</a><a href="#">Scoliose</a><a href="#">Douleur sacro-iliaque</a></div></div></div>
+      </div>
+      <!-- ÉPAULE -->
+      <div class="zone-view" data-zone-view="epaule">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid"><div class="mega-col"><a href="#">Attelles d'immobilisation</a><a href="#">&Eacute;charpe de bras</a><a href="#">&Eacute;pauli&egrave;res</a><a href="#">Anneaux claviculaires</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Luxation de l'&eacute;paule</a><a href="#">Tendinite de l'&eacute;paule</a><a href="#">Fracture de la clavicule</a><a href="#">Arthrose de l'&eacute;paule</a></div></div></div>
+      </div>
+      <!-- COUDE -->
+      <div class="zone-view" data-zone-view="coude">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid"><div class="mega-col"><a href="#">Attelle coude d'immobilisation</a><a href="#">Bracelet &eacute;picondylien</a><a href="#">Coudi&egrave;re souple</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Tennis elbow (&eacute;picondylite)</a><a href="#">Golf elbow</a><a href="#">Tendinite du coude</a><a href="#">Arthrose du coude</a></div></div></div>
+      </div>
+      <!-- POIGNET -->
+      <div class="zone-view" data-zone-view="poignet">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid"><div class="mega-col"><a href="#">Attelles poignets</a><a href="#">Attelles poignet-pouce</a><a href="#">Attelles pouce</a><a href="#">Orth&egrave;ses de doigt</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Canal carpien</a><a href="#">Entorse du poignet</a><a href="#">Tendinite de Quervain</a><a href="#">Rhizarthrose du pouce</a><a href="#">Polyarthrite rhumato&iuml;de</a></div></div></div>
+      </div>
+      <!-- CERVICAL -->
+      <div class="zone-view" data-zone-view="cervical">
+        <div class="mega-tabs"><button class="mega-tab-btn is-active">Type</button><button class="mega-tab-btn">Par pathologie</button></div>
+        <div class="mega-pane is-active"><div class="mega-grid"><div class="mega-col"><a href="#">Colliers cervicaux souples (C1)</a><a href="#">Colliers cervicaux semi-rigides (C2)</a><a href="#">Colliers cervicaux rigides (C3)</a></div></div></div>
+        <div class="mega-pane"><div class="mega-grid"><div class="mega-col"><a href="#">Cervicalgie</a><a href="#">Torticolis</a><a href="#">Hernie cervicale</a><a href="#">Whiplash (coup du lapin)</a></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RÉCUPÉRATION -->
+<div class="mega-panel" id="mega-recuperation">
+  <div class="mega-body">
+    <div class="mega-side"><div class="mega-side-links">
+      <button class="mega-side-link is-active"><span class="material-icons-outlined icon">electric_bolt</span>&Eacute;lectrostimulation</button>
+      <button class="mega-side-link"><span class="material-icons-outlined icon">ac_unit</span>Cryoth&eacute;rapie</button>
+      <button class="mega-side-link"><span class="material-icons-outlined icon">air</span>Pressoth&eacute;rapie</button>
+      <button class="mega-side-link"><span class="material-icons-outlined icon">self_improvement</span>Massage</button>
+      <button class="mega-side-link"><span class="material-icons-outlined icon">light_mode</span>Luminoth&eacute;rapie</button>
+      <button class="mega-side-link"><span class="material-icons-outlined icon">whatshot</span>Thermoth&eacute;rapie</button>
+    </div></div>
+    <div class="mega-main"><div class="mega-simple"><div class="mega-grid">
+      <div class="mega-col"><div class="mega-col-title">&Eacute;lectrostimulation</div><a href="#">Anti-douleurs (TENS)</a><a href="#">Performance (EMS)</a><a href="#">Fitness</a><a href="#">Sans fil</a><a href="#">P&eacute;rin&eacute;al</a><a href="#">Professionnel</a><a href="#">&Eacute;lectrodes &amp; accessoires</a></div>
+      <div class="mega-col"><div class="mega-col-title">Cryoth&eacute;rapie</div><a href="#">Bains froids</a><a href="#">Bottes de cryoth&eacute;rapie</a><a href="#">Cryoth&eacute;rapie compressive</a><a href="#">Attelles de cryoth&eacute;rapie</a><a href="#">Gilets &amp; vestes rafra&icirc;chissants</a></div>
+      <div class="mega-col"><div class="mega-col-title">Pressoth&eacute;rapie</div><a href="#">Bottes de pressoth&eacute;rapie</a><a href="#">Appareils complets</a><a href="#">Manchons &amp; accessoires</a></div>
+      <div class="mega-col"><div class="mega-col-title">Massage</div><a href="#">Pistolets de massage</a><a href="#">Rouleaux de massage</a><a href="#">Balles de massage</a><a href="#">Cr&egrave;mes &amp; gels</a></div>
+      <div class="mega-col"><div class="mega-col-title">Thermoth&eacute;rapie</div><a href="#">Ceintures chauffantes</a><a href="#">&Eacute;pauli&egrave;res chauffantes</a><a href="#">Genouill&egrave;res chauffantes</a></div>
+    </div></div></div>
+  </div>
+</div>
+
+<!-- PRÉPA PHYSIQUE -->
+<div class="mega-panel" id="mega-prepa">
+  <div class="mega-body">
+    <div class="mega-side"><div class="mega-side-links">
+      <button class="mega-side-link is-active"><span class="material-icons-outlined icon">fitness_center</span>Appareils</button>
+      <button class="mega-side-link"><span class="material-icons-outlined icon">sports_gymnastics</span>&Eacute;chauffement</button>
+      <button class="mega-side-link"><span class="material-icons-outlined icon">sports_kabaddi</span>R&eacute;sistance</button>
+      <button class="mega-side-link"><span class="material-icons-outlined icon">category</span>Petit mat&eacute;riel</button>
+    </div></div>
+    <div class="mega-main"><div class="mega-simple"><div class="mega-grid">
+      <div class="mega-col"><div class="mega-col-title">Appareils d'entra&icirc;nement</div><a href="#">BFR (Blood Flow Restriction)</a><a href="#">Entra&icirc;nement isoinertiels</a><a href="#">BlazePod</a><a href="#">Entra&icirc;nement respiratoire</a><a href="#">Entra&icirc;nement visuel</a></div>
+      <div class="mega-col"><div class="mega-col-title">&Eacute;chauffement &amp; mobilit&eacute;</div><a href="#">Cordes &agrave; sauter</a><a href="#">&Eacute;lastiques &amp; bandes</a><a href="#">Rouleaux de massage</a><a href="#">Pistolets de massage</a></div>
+      <div class="mega-col"><div class="mega-col-title">R&eacute;sistance &amp; puissance</div><a href="#">Harnais de r&eacute;sistance</a><a href="#">Parachutes de vitesse</a><a href="#">Tra&icirc;neaux de puissance</a></div>
+      <div class="mega-col"><div class="mega-col-title">Petit mat&eacute;riel</div><a href="#">Balles de proprioception</a><a href="#">Coussins d'&eacute;quilibre</a><a href="#">Swiss Ball</a><a href="#">Tapis de sol</a></div>
+    </div></div></div>
+  </div>
+</div>
+
+<!-- NUTRITION -->
+<div class="mega-panel" id="mega-nutrition">
+  <div class="mega-body">
+    <div class="mega-main"><div class="mega-simple"><div class="mega-grid">
+      <div class="mega-col"><div class="mega-col-title">Nutrition sportive</div><a href="#">Prot&eacute;ines</a><a href="#">Barres &eacute;nerg&eacute;tiques</a><a href="#">Boissons isotoniques</a><a href="#">Gels &eacute;nerg&eacute;tiques</a></div>
+      <div class="mega-col"><div class="mega-col-title">Compl&eacute;ments</div><a href="#">Collag&egrave;ne &amp; articulations</a><a href="#">Anti-inflammatoires naturels</a><a href="#">Vitamines &amp; min&eacute;raux</a><a href="#">Om&eacute;ga 3</a></div>
+      <div class="mega-col"><div class="mega-col-title">R&eacute;cup&eacute;ration</div><a href="#">Boissons de r&eacute;cup&eacute;ration</a><a href="#">BCAA &amp; acides amin&eacute;s</a><a href="#">Cr&eacute;atine</a></div>
+    </div></div></div>
+  </div>
+</div>
+
+<!-- MATÉRIEL PRO -->
+<div class="mega-panel" id="mega-pro">
+  <div class="mega-body">
+    <div class="mega-main"><div class="mega-simple"><div class="mega-grid">
+      <div class="mega-col"><div class="mega-col-title">Kin&eacute;sith&eacute;rapie</div><a href="#">Tables de kin&eacute;sith&eacute;rapie</a><a href="#">Mobilier de cabinet</a><a href="#">Mat&eacute;riel de r&eacute;&eacute;ducation</a></div>
+      <div class="mega-col"><div class="mega-col-title">Consommables</div><a href="#">Strapping &amp; taping</a><a href="#">Consommables m&eacute;dicaux</a></div>
+      <div class="mega-col"><div class="mega-col-title">Sant&eacute; connect&eacute;e</div><a href="#">Biofeedback</a><a href="#">Appareils de mesure</a></div>
+      <div class="mega-col"><div class="mega-col-title">Sp&eacute;cialis&eacute;</div><a href="#">Maternit&eacute;</a><a href="#">P&eacute;diatrie</a></div>
+    </div></div></div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1263,11 +1523,70 @@ img{display:block;max-width:100%}
 </footer>
 
 <script>
-// Header scroll effect
-const header=document.getElementById('header');
-window.addEventListener('scroll',()=>{
-  header.classList.toggle('scrolled',window.scrollY>10);
-},{passive:true});
+// ===== MEGA MENU =====
+(function(){
+  const navbar=document.getElementById('js-navbar'),backdrop=document.getElementById('js-backdrop');
+  const navLinks=document.querySelectorAll('.nav-link[data-target]'),panels=document.querySelectorAll('.mega-panel');
+  let activePanel=null,closeTimer=null;
+
+  function positionPanels(){
+    const t=navbar.getBoundingClientRect().bottom+'px';
+    panels.forEach(p=>p.style.top=t);
+  }
+  window.addEventListener('scroll',positionPanels,{passive:true});
+  window.addEventListener('resize',positionPanels);
+  positionPanels();
+
+  function openPanel(id){
+    clearTimeout(closeTimer);
+    if(activePanel&&activePanel.id===id)return;
+    closeAll();
+    const p=document.getElementById(id);if(!p)return;
+    p.classList.add('is-open');backdrop.classList.add('is-visible');
+    navLinks.forEach(l=>l.classList.toggle('is-active',l.dataset.target===id));
+    activePanel=p;positionPanels();
+  }
+  function closeAll(){
+    panels.forEach(p=>p.classList.remove('is-open'));
+    backdrop.classList.remove('is-visible');
+    navLinks.forEach(l=>l.classList.remove('is-active'));
+    activePanel=null;
+  }
+  function scheduleClose(){closeTimer=setTimeout(closeAll,180)}
+  function cancelClose(){clearTimeout(closeTimer)}
+
+  navLinks.forEach(l=>{
+    l.addEventListener('mouseenter',()=>openPanel(l.dataset.target));
+    l.addEventListener('mouseleave',scheduleClose);
+  });
+  panels.forEach(p=>{
+    p.addEventListener('mouseenter',cancelClose);
+    p.addEventListener('mouseleave',scheduleClose);
+  });
+  backdrop.addEventListener('click',closeAll);
+
+  // Zone switching
+  document.querySelectorAll('.mega-side-link[data-zone]').forEach(btn=>{
+    btn.addEventListener('mouseenter',function(){
+      const panel=this.closest('.mega-panel');
+      panel.querySelectorAll('.mega-side-link').forEach(l=>l.classList.remove('is-active'));
+      this.classList.add('is-active');
+      panel.querySelectorAll('.zone-view').forEach(v=>v.classList.remove('is-active'));
+      panel.querySelector('[data-zone-view="'+this.dataset.zone+'"]').classList.add('is-active');
+    });
+  });
+
+  // Tab switching
+  document.addEventListener('click',function(e){
+    const tab=e.target.closest('.mega-tab-btn');if(!tab)return;
+    const view=tab.closest('.zone-view')||tab.closest('.mega-main');
+    const tabs=view.querySelectorAll('.mega-tab-btn'),panes=view.querySelectorAll('.mega-pane');
+    const idx=Array.from(tabs).indexOf(tab);
+    tabs.forEach(t=>t.classList.remove('is-active'));
+    panes.forEach(p=>p.classList.remove('is-active'));
+    tab.classList.add('is-active');if(panes[idx])panes[idx].classList.add('is-active');
+  });
+})();
 
 // Scroll reveal
 const reveals=document.querySelectorAll('.reveal');
